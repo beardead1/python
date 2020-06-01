@@ -1,0 +1,64 @@
+﻿{% extends "base.html" %}
+
+{% block title %}
+<h1 class="masthead-heading text-uppercase mb-0">Logowanie</h1>
+    <div class="box">
+        <form method="POST" action="/login">
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="email" name="email" placeholder="E-mail" autofocus="">
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="password" name="password" placeholder="Hasło">
+                </div>
+            </div>
+            <div class="field">
+                <label class="checkbox">
+                    <input type="checkbox">
+                    Zapamiętaj mnie!
+                </label>
+            </div>
+            <button class="button is-block is-info is-large is-fullwidth">Login</button>
+        </form>
+    </div>
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    <div class="notification is-danger">
+        {{ messages[0] }}
+    </div>
+{% endif %}
+{% endwith %}
+<form method="POST" action="/login">
+
+
+{% endblock %}
+
+
+{% block content %}
+
+<font size="20px">Posty użytkowników:</font>
+<br><br><br>
+
+ {% for rekord in rekordy %}
+ Użytkownik <b>{{rekord["osoba"]}}</b> pisze:
+ <br><br>
+ <div class="box">
+ <table border = 0>
+
+ <tr>
+ <td>Tytuł: </td><td>{{rekord["title"]}}</td>
+ <tr><td>Treść: </td><td>{{rekord["body"]}}</td>
+ <tr><td>Opublikowano: </td><td>{{rekord["pub_date"]}}</td>
+
+ </tr>  
+ </table>
+ </div>
+
+
+<br><br>
+{% endfor %}
+{% endblock %}

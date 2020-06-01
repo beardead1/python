@@ -1,0 +1,38 @@
+﻿{% extends "base.html" %}
+
+{% block title %}
+<h1 class="masthead-heading text-uppercase mb-0">  Witaj, {{ name }}!</h1><br><br>
+<h1>Zjedź niżej aby przejrzeć swoje posty: </h1>
+{% endblock %}
+
+{% block content %}
+
+ {% for rekord in rekordy %}
+ Użytkownik <b>{{rekord["osoba"]}}</b> pisze:
+ <br><br>
+ <div class="box">
+ <table border = 0>
+
+ <tr>
+ <td>Tytuł: </td><td>{{rekord["title"]}}</td>
+ <tr><td>Treść: </td><td>{{rekord["body"]}}</td>
+ <tr><td>Opublikowano: </td><td>{{rekord["pub_date"]}}</td>
+<tr><td>
+
+<form method="POST" action="/profile">
+                    identyfikator: <input type="text" name="id" value={{rekord["id"]}} disabled>
+                    <button>Usuń</button>
+</form>
+
+
+
+</td>
+ </tr>  
+ </table>
+ </div>
+
+
+<br><br>
+ {% endfor %}
+ 
+ {% endblock %}

@@ -1,0 +1,24 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+
+ {% for rekord in rekordy %}
+ <div class="box">
+ <table border = 0>
+
+ <tr>
+ <td>Tytuł: </td><td>{{rekord["title"]}}</td>
+ <tr><td>Treść: </td><td>{{rekord["body"]}}</td>
+ <tr><td>Opublikowano: </td><td>{{rekord["pub_date"]}}</td>
+ <tr><td>Autor: </td><td>{{rekord["osoba"]}}</td>
+
+ </tr>  
+ </table>
+ </div>
+
+
+<br><br><br>
+ {% endfor %}
+ 
+
+{% endblock %}
